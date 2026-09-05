@@ -1,51 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import (
-    health,
-    auth,
-    routine,
-    task,
-    target,
-    assistant,
-    memory,
-    creation,
-    news,
-    reminder,
-    note,
-    habit,
-)
 
 from app.core.config import settings
-from app.routers import (
-    health,
-    auth,
-    routine,
-    task,
-    target,
-    assistant,
-    memory,
-    creation,
-    news,
-    reminder,
-    note,
-)
-
-from app.routers import (
-    health,
-    auth,
-    routine,
-    task,
-    target,
-    assistant,
-    memory,
-    creation,
-    news,
-    reminder,
-    note,
-    habit,
-    focus,
-)
-
 from app.routers import (
     health,
     auth,
@@ -74,7 +30,6 @@ app.add_middleware(
 )
 
 app.include_router(health.router)
-app.include_router(event.router)
 app.include_router(auth.router)
 app.include_router(routine.router)
 app.include_router(task.router)
@@ -85,7 +40,10 @@ app.include_router(creation.router)
 app.include_router(news.router)
 app.include_router(reminder.router)
 app.include_router(note.router)
+app.include_router(habit.router)
 app.include_router(focus.router)
+app.include_router(event.router)
+
 
 @app.get("/")
 def read_root():

@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
 const apiClient = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: API_URL,
 });
 
 // Attach access token to every outgoing request
@@ -25,7 +27,7 @@ apiClient.interceptors.response.use(
 
       if (refreshToken) {
         try {
-          const { data } = await axios.post("http://localhost:8000/auth/refresh", {
+          const { data } = await axios.post(`${API_URL}/auth/refresh`, {
             refresh_token: refreshToken,
           });
           localStorage.setItem("access_token", data.access_token);
